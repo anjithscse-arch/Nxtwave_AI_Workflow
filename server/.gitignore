@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Environment variables & secrets (CRITICAL: Never commit real API keys or DB passwords)
+.env
+.env.local
+.env.*.local
+
+# Server upload & temporary test files
+uploads/*
+!uploads/.gitkeep
+temp_*
+*.log
+audit_report.json
+user_flows_report.json
