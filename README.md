@@ -2,6 +2,11 @@
 
 CampusMind is an enterprise-grade, full-stack RAG (Retrieval-Augmented Generation) college help-desk chatbot. It enables students to query official college documents (regulations, fee structures, notices, hostel policies) in natural language while strictly guaranteeing factual grounding, zero hallucinations, source page citations, and multi-layer prompt-injection defense.
 
+### 🌐 Live Production Deployment
+- **Frontend (Vercel)**: [https://campusmind-client.vercel.app](https://campusmind-client.vercel.app)
+- **Backend API (Render)**: [https://campusmind-backend-lfm9.onrender.com](https://campusmind-backend-lfm9.onrender.com)
+- **Health Endpoint**: [https://campusmind-backend-lfm9.onrender.com/api/health](https://campusmind-backend-lfm9.onrender.com/api/health)
+
 ---
 
 ## 🏛️ System Architecture
