@@ -1,0 +1,30 @@
+{
+  "name": "campusmind-monorepo",
+  "version": "1.0.0",
+  "description": "CampusMind - Grounded College Chatbot with Multi-Agent Guardrails and Atlas Vector Search",
+  "private": true,
+  "scripts": {
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "start:server": "npm --prefix server start",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build",
+    "test:guardrail": "npm --prefix server run test:guardrail",
+    "test:e2e": "node server/src/scripts/testE2E.js",
+    "test:audit": "node server/src/scripts/comprehensiveAudit.js",
+    "seed": "npm --prefix server run seed"
+  },
+  "keywords": [
+    "rag",
+    "chatbot",
+    "gemini",
+    "mongodb-atlas",
+    "vector-search",
+    "socketio",
+    "guardrails",
+    "react",
+    "express"
+  ],
+  "author": "CampusMind Team",
+  "license": "MIT"
+}
