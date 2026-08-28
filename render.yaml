@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: campusmind-backend
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: CLIENT_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: MONGODB_URI
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: GEMINI_EMBEDDING_MODEL
+        value: gemini-embedding-001
+      - key: SIMILARITY_THRESHOLD
+        value: "0.35"
+      - key: TOP_K
+        value: "5"
+      - key: GUARDRAIL_CONFIDENCE_THRESHOLD
+        value: "0.70"

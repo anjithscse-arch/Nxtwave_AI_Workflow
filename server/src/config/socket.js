@@ -6,7 +6,12 @@ let ioInstance = null;
 export function initSocket(httpServer) {
   ioInstance = new Server(httpServer, {
     cors: {
-      origin: [config.clientUrl, 'http://localhost:5173', 'http://127.0.0.1:5173'],
+      origin: (origin, callback) => {
+        if (!origin || config.clientUrl === '*' || origin === config.clientUrl || origin.includes('localhost') || origin.includes('127.0.0.1') || origin.endsWith('.vercel.app') || origin.endsWith('.onrender.com') || origin.endsWith('.netlify.app')) {
+          return callback(null, true);
+        }
+        return callback(null, true);
+      },
       methods: ['GET', 'POST'],
       credentials: true
     },

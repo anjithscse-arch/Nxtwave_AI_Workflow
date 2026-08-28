@@ -34,8 +34,15 @@ initSocket(httpServer);
 app.use(helmet({
   crossOriginResourcePolicy: false,
 }));
+// Permissive and flexible CORS for deployment (Vercel, Render, local dev)
 app.use(cors({
-  origin: [config.clientUrl, 'http://localhost:5173', 'http://127.0.0.1:5173'],
+  origin: (origin, callback) => {
+    // Allow server-to-server, curl, mobile, and dev/prod origins
+    if (!origin || config.clientUrl === '*' || origin === config.clientUrl || origin.includes('localhost') || origin.includes('127.0.0.1') || origin.endsWith('.vercel.app') || origin.endsWith('.onrender.com') || origin.endsWith('.netlify.app')) {
+      return callback(null, true);
+    }
+    return callback(null, true);
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
