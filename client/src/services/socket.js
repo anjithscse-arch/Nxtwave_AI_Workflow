@@ -2,7 +2,8 @@ import { io } from 'socket.io-client';
 
 let socket = null;
 
-const SOCKET_URL = import.meta.env.VITE_API_URL || '/';
+const rawSocketUrl = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
+const SOCKET_URL = rawSocketUrl || '/';
 
 export function getSocket() {
   if (!socket) {
