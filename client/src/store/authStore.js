@@ -1,8 +1,20 @@
 import { create } from 'zustand';
 import api from '../services/api.js';
 
+function getInitialUser() {
+  try {
+    const raw = localStorage.getItem('campusmind_user');
+    if (!raw || raw === 'undefined' || raw === 'null') return null;
+    return JSON.parse(raw);
+  } catch (err) {
+    console.warn('Failed to parse user from localStorage:', err);
+    localStorage.removeItem('campusmind_user');
+    return null;
+  }
+}
+
 export const useAuthStore = create((set, get) => ({
-  user: JSON.parse(localStorage.getItem('campusmind_user') || 'null'),
+  user: getInitialUser(),
   token: localStorage.getItem('campusmind_token') || null,
   isAuthenticated: Boolean(localStorage.getItem('campusmind_token')),
   isLoading: false,
@@ -67,9 +79,13 @@ export const useAuthStore = create((set, get) => ({
 
     try {
       const response = await api.get('/auth/me');
-      const user = response.data.data;
-      localStorage.setItem('campusmind_user', JSON.stringify(user));
-      set({ user, isAuthenticated: true });
+      const user = response.data?.data;
+      if (user && typeof user === 'object') {
+        localStorage.setItem('campusmind_user', JSON.stringify(user));
+        set({ user, isAuthenticated: true });
+      } else {
+        throw new Error('Invalid user profile response');
+      }
     } catch (error) {
       localStorage.removeItem('campusmind_token');
       localStorage.removeItem('campusmind_user');

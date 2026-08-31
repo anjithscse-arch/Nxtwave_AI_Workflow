@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const rawApiUrl = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
+const DEFAULT_PROD_API = 'https://campusmind-backend-lfm9.onrender.com';
+const rawApiUrl = (import.meta.env.VITE_API_URL || (import.meta.env.PROD ? DEFAULT_PROD_API : '')).replace(/\/+$/, '');
 const API_BASE = rawApiUrl ? `${rawApiUrl}/api` : '/api';
 
 const api = axios.create({

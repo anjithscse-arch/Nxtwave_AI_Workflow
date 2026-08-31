@@ -2,7 +2,8 @@ import { io } from 'socket.io-client';
 
 let socket = null;
 
-const rawSocketUrl = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
+const DEFAULT_PROD_API = 'https://campusmind-backend-lfm9.onrender.com';
+const rawSocketUrl = (import.meta.env.VITE_API_URL || (import.meta.env.PROD ? DEFAULT_PROD_API : '')).replace(/\/+$/, '');
 const SOCKET_URL = rawSocketUrl || '/';
 
 export function getSocket() {
