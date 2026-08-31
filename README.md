@@ -6,6 +6,7 @@ CampusMind is an enterprise-grade, full-stack RAG (Retrieval-Augmented Generatio
 - **Frontend (Vercel)**: [https://campusmind-client.vercel.app](https://campusmind-client.vercel.app)
 - **Backend API (Render)**: [https://campusmind-backend-lfm9.onrender.com](https://campusmind-backend-lfm9.onrender.com)
 - **Health Endpoint**: [https://campusmind-backend-lfm9.onrender.com/api/health](https://campusmind-backend-lfm9.onrender.com/api/health)
+- **Teacher & Mentor Explanation Guide**: [MENTOR_EXPLANATION.md](file:///c:/Users/Anjith%20S/Desktop/AI_workflow/MENTOR_EXPLANATION.md)
 
 ---
 
