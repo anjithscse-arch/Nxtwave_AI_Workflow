@@ -2,8 +2,10 @@
   "name": "campusmind-monorepo",
   "version": "1.0.0",
   "description": "CampusMind - Grounded College Chatbot with Multi-Agent Guardrails and Atlas Vector Search",
-  "private": true,
+  "type": "module",
   "scripts": {
+    "dev": "node dev.js",
+    "start": "node dev.js",
     "install:all": "npm --prefix server install && npm --prefix client install",
     "start:server": "npm --prefix server start",
     "dev:server": "npm --prefix server run dev",
